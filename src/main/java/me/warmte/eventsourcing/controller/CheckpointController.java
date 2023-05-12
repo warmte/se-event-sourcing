@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CheckpointController {
 
     @Autowired
-    private CheckpointService checkPointService;
+    private CheckpointService checkpointService;
 
     @GetMapping("/checkpoint")
     public String checkpointPage() {

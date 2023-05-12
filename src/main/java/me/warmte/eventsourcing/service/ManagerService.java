@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class ManagerService {
     @Autowired
-    private CheckpointEventRepository checkPointEventRepository;
+    private CheckpointEventRepository checkpointEventRepository;
 
     @Autowired
     private CreateSubscriptionEventRepository createSubscriptionEventRepository;
