@@ -25,7 +25,7 @@ public class ManagerService {
     @Autowired
     private ProlongSubscriptionEventRepository prolongSubscriptionEventRepository;
 
-    private LocalDateTime convert(String s) {
+    public LocalDateTime convert(String s) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH,mm,dd,MM,yyyy");
         LocalDateTime result = null;
         try {

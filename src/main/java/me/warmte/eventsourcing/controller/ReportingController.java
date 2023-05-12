@@ -8,9 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Controller
 public class ReportingController {
     @Autowired
@@ -37,10 +34,8 @@ public class ReportingController {
         if (result == null) {
             return "ReportingPage";
         }
-        Map<String, String> mp = new HashMap<>();
-        mp.put("param", date);
-        mp.put("result", String.valueOf(result));
-        model.addAttribute("mp", mp);
+        model.addAttribute("param", date);
+        model.addAttribute("result", String.valueOf(result));
         return "StatPage";
     }
 
@@ -53,10 +48,8 @@ public class ReportingController {
         if (result == null) {
             return "ReportingPage";
         }
-        Map<String, String> mp = new HashMap<>();
-        mp.put("param", String.valueOf(subscriptionId));
-        mp.put("result", String.valueOf((double) result.first / (double) result.second));
-        model.addAttribute("mp", mp);
+        model.addAttribute("param", String.valueOf(subscriptionId));
+        model.addAttribute("result", String.valueOf((double) result.first / (double) result.second));
         return "StatPage";
     }
 }

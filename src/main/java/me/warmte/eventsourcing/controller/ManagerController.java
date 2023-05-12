@@ -7,9 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Controller
 public class ManagerController {
 
@@ -30,10 +27,8 @@ public class ManagerController {
         if (result == null) {
             return "ManagerPage";
         }
-        Map<String, String> mp = new HashMap<>();
-        mp.put("subscriptionId", String.valueOf(subscriptionId));
-        mp.put("expiryDate", result);
-        model.addAttribute("mp", mp);
+        model.addAttribute("subscriptionId", String.valueOf(subscriptionId));
+        model.addAttribute("expiryDate", result);
         return "InfoPage";
     }
 
@@ -46,10 +41,8 @@ public class ManagerController {
         if (result == null) {
             return "ManagerPage";
         }
-        Map<String, String> mp = new HashMap<>();
-        mp.put("subscriptionId", result);
-        mp.put("expiryDate", expiry);
-        model.addAttribute("mp", mp);
+        model.addAttribute("subscriptionId", result);
+        model.addAttribute("expiryDate", expiry);
         return "CreatePage";
     }
 
@@ -63,10 +56,8 @@ public class ManagerController {
         if (result == null) {
             return "ManagerPage";
         }
-        Map<String, String> mp = new HashMap<>();
-        mp.put("subscriptionId", String.valueOf(subscriptionId));
-        mp.put("expiryDate", result);
-        model.addAttribute("mp", mp);
+        model.addAttribute("subscriptionId", String.valueOf(subscriptionId));
+        model.addAttribute("expiryDate", result);
         return "ProlongPage";
     }
 }
