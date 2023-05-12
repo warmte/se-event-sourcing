@@ -50,6 +50,17 @@ public class ManagerService {
         return answer;
     }
 
+    public LocalDateTime getActualSubscription(long subscriptionId) {
+        List<LocalDateTime> list1 = getSubscriptionListInfo(subscriptionId);
+        if (list1 == null) {
+            return null;
+        }
+        if (list1.size() == 0) {
+            return null;
+        }
+        return list1.get(list1.size() - 1);
+    }
+
     public String getSubscriptionInfo(long subscriptionId) {
         List<LocalDateTime> list1 = getSubscriptionListInfo(subscriptionId);
         if (list1 == null) {
@@ -72,14 +83,10 @@ public class ManagerService {
     }
 
     public String prolongSubscription(Long subscriptionId, String expiry) {
-        List<LocalDateTime> list1 = getSubscriptionListInfo(subscriptionId);
-        if (list1 == null) {
+        LocalDateTime dateTime = getActualSubscription(subscriptionId);
+        if (dateTime == null) {
             return null;
         }
-        if (list1.size() == 0) {
-            return null;
-        }
-        LocalDateTime dateTime = list1.get(list1.size() - 1);
         if (dateTime.isAfter(convert(expiry))) {
             return null;
         }

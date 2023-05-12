@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<p th:text="'User with subscription ' + ${subscriptionId} + ' successfully logged out!'"></p>
+<p th:text="'User subscription ' + ${mp['subscriptionId']} + ' successfully logged out at time ' + ${mp['time']} + '!'"></p>
 </body>
 </html>

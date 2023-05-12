@@ -7,6 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 public class CheckpointController {
 
@@ -23,7 +26,14 @@ public class CheckpointController {
             @RequestParam(name = "id") long subscriptionId,
             Model model
     ) {
-        model.addAttribute("subscriptionId", subscriptionId);
+        String result = checkpointService.login(subscriptionId);
+        if (result == null) {
+            return "CheckpointPage";
+        }
+        Map<String, String> mp = new HashMap<>();
+        mp.put("subscriptionId", String.valueOf(subscriptionId));
+        mp.put("time", result);
+        model.addAttribute("mp", mp);
         return "LoginPage";
     }
 
@@ -32,7 +42,14 @@ public class CheckpointController {
             @RequestParam(name = "id") long subscriptionId,
             Model model
     ) {
-        model.addAttribute("subscriptionId", subscriptionId);
+        String result = checkpointService.logout(subscriptionId);
+        if (result == null) {
+            return "CheckpointPage";
+        }
+        Map<String, String> mp = new HashMap<>();
+        mp.put("subscriptionId", String.valueOf(subscriptionId));
+        mp.put("time", result);
+        model.addAttribute("mp", mp);
         return "LogoutPage";
     }
 }
